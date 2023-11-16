@@ -1,0 +1,27 @@
+# permissions for end users to view keyrequests.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: keyrequest-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: quantum-manager
+    app.kubernetes.io/part-of: quantum-manager
+    app.kubernetes.io/managed-by: kustomize
+  name: keyrequest-viewer-role
+rules:
+- apiGroups:
+  - keyrequest.quantum-manager.io
+  resources:
+  - keyrequests
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - keyrequest.quantum-manager.io
+  resources:
+  - keyrequests/status
+  verbs:
+  - get

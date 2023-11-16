@@ -1,0 +1,12 @@
+apiVersion: keyrequest.quantum-manager.io/v1
+kind: KeyRequest
+metadata:
+  labels:
+    app.kubernetes.io/name: keyrequest
+    app.kubernetes.io/instance: keyrequest-sample
+    app.kubernetes.io/part-of: quantum-manager
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: quantum-manager
+  name: keyrequest-sample
+spec:
+  # TODO(user): Add fields here
