@@ -12,7 +12,7 @@ metadata:
   name: keyrequest-viewer-role
 rules:
 - apiGroups:
-  - keyrequest.quantum-manager.io
+  - quantum-manager.io
   resources:
   - keyrequests
   verbs:
@@ -20,7 +20,7 @@ rules:
   - list
   - watch
 - apiGroups:
-  - keyrequest.quantum-manager.io
+  - quantum-manager.io
   resources:
   - keyrequests/status
   verbs:

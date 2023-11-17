@@ -25,7 +25,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
-	keyrequestv1 "github.com/ShubhamTatvamasi/quantum-manager/api/v1"
+	quantummanageriov1 "github.com/ShubhamTatvamasi/quantum-manager/api/v1"
 )
 
 // KeyRequestReconciler reconciles a KeyRequest object
@@ -34,9 +34,9 @@ type KeyRequestReconciler struct {
 	Scheme *runtime.Scheme
 }
 
-//+kubebuilder:rbac:groups=keyrequest.quantum-manager.io,resources=keyrequests,verbs=get;list;watch;create;update;patch;delete
-//+kubebuilder:rbac:groups=keyrequest.quantum-manager.io,resources=keyrequests/status,verbs=get;update;patch
-//+kubebuilder:rbac:groups=keyrequest.quantum-manager.io,resources=keyrequests/finalizers,verbs=update
+//+kubebuilder:rbac:groups=quantum-manager.io,resources=keyrequests,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=quantum-manager.io,resources=keyrequests/status,verbs=get;update;patch
+//+kubebuilder:rbac:groups=quantum-manager.io,resources=keyrequests/finalizers,verbs=update
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.
@@ -59,6 +59,6 @@ func (r *KeyRequestReconciler) Reconcile(ctx context.Context, req ctrl.Request) 
 // SetupWithManager sets up the controller with the Manager.
 func (r *KeyRequestReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
-		For(&keyrequestv1.KeyRequest{}).
+		For(&quantummanageriov1.KeyRequest{}).
 		Complete(r)
 }

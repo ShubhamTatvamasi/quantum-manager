@@ -4,9 +4,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.13.0
-  name: keyrequests.keyrequest.quantum-manager.io
+  name: keyrequests.quantum-manager.io
 spec:
-  group: keyrequest.quantum-manager.io
+  group: quantum-manager.io
   names:
     kind: KeyRequest
     listKind: KeyRequestList

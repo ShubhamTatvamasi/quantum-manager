@@ -1,4 +1,4 @@
-apiVersion: keyrequest.quantum-manager.io/v1
+apiVersion: quantum-manager.io/v1
 kind: KeyRequest
 metadata:
   labels:

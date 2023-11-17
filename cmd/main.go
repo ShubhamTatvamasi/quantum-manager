@@ -32,7 +32,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 	metricsserver "sigs.k8s.io/controller-runtime/pkg/metrics/server"
 
-	keyrequestv1 "github.com/ShubhamTatvamasi/quantum-manager/api/v1"
+	quantummanageriov1 "github.com/ShubhamTatvamasi/quantum-manager/api/v1"
 	"github.com/ShubhamTatvamasi/quantum-manager/internal/controller"
 	//+kubebuilder:scaffold:imports
 )
@@ -45,7 +45,7 @@ var (
 func init() {
 	utilruntime.Must(clientgoscheme.AddToScheme(scheme))
 
-	utilruntime.Must(keyrequestv1.AddToScheme(scheme))
+	utilruntime.Must(quantummanageriov1.AddToScheme(scheme))
 	//+kubebuilder:scaffold:scheme
 }
 
