@@ -24,6 +24,7 @@ make manifests
 Install CRDs into the Kubernetes cluster using kubectl apply:
 ```
 make install
+make uninstall
 ```
 
 Regenerate code and run against the Kubernetes cluster configured by `~/.kube/config`:
@@ -50,4 +51,5 @@ make docker-build docker-push
 Create a deployment:
 ```bash
 make deploy
+make undeploy
 ```
