@@ -26,6 +26,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
 	quantummanageriov1 "github.com/ShubhamTatvamasi/quantum-manager/api/v1"
+	"github.com/ShubhamTatvamasi/quantum-manager/internal/oqs"
 )
 
 // KeyRequestReconciler reconciles a KeyRequest object
@@ -52,6 +53,7 @@ func (r *KeyRequestReconciler) Reconcile(ctx context.Context, req ctrl.Request) 
 
 	// TODO(user): your logic here
 	fmt.Println("Hello from Quantum Manager")
+	oqs.GenerateKey()
 
 	return ctrl.Result{}, nil
 }
