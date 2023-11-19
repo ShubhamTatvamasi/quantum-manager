@@ -10,4 +10,5 @@ func GenerateKey() {
 	fmt.Println("Generate Key")
 	var liboqsVersion = oqs.LiboqsVersion()
 	fmt.Println("liboqs version: ", liboqsVersion)
+	// oqs.EnabledKEMs()
 }
