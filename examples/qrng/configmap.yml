@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: qrng-config
+data:
+  main.go: |
+    package main
+
+    import (
+      "fmt"
+      "time"
+      "encoding/base64"
+    )
+
+    func main() {
+
+      decodeSecret()
+      waitForever()
+    }
+
+    func waitForever() {
+      for {
+        time.Sleep(time.Hour)
+      }
+    }
+
+    func decodeSecret() {
+      // Your Base64-encoded string
+      encodedString := "OPWQbmEPr/yGtYvBaQpGY/U1Afq/atL6/YF1PhZ7Nrw="
+
+      // Decode Base64 string
+      decodedBytes, err := base64.StdEncoding.DecodeString(encodedString)
+      if err != nil {
+        fmt.Println("Error decoding:", err)
+        return
+      }
+
+      // Convert byte slice to string
+      decodedString := string(decodedBytes)
+
+      // Convert string to byte slice
+      byteArray := []byte(decodedString)
+
+      // Print the result
+      fmt.Println("Base64 Encoded:", encodedString)
+      fmt.Println("Decoded String:", decodedString)
+      fmt.Println("Bytes Array:", byteArray)
+    }

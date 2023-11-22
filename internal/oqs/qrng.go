@@ -2,6 +2,7 @@ package oqs
 
 import (
 	"context"
+	"fmt"
 
 	quantummanageriov1 "github.com/ShubhamTatvamasi/quantum-manager/api/v1"
 	oqsrand "github.com/open-quantum-safe/liboqs-go/oqs/rand"
@@ -13,7 +14,10 @@ import (
 
 func GenerateRandomNumber(r client.Client, ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 
-	randomNumber := oqsrand.RandomBytes(256)
+	randomNumber := oqsrand.RandomBytes(32)
+
+	// delete this in future
+	fmt.Println(randomNumber)
 
 	keyrequest := &quantummanageriov1.KeyRequest{}
 	err := r.Get(ctx, req.NamespacedName, keyrequest)
