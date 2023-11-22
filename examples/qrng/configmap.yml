@@ -9,36 +9,25 @@ data:
     import (
       "fmt"
       "time"
-      "encoding/base64"
+      "io/ioutil"
     )
 
     func main() {
 
-      decodeSecret()
+      byteArray()
       waitForever()
     }
 
-    func decodeSecret() {
-      // Your Base64-encoded string
-      encodedString := "OPWQbmEPr/yGtYvBaQpGY/U1Afq/atL6/YF1PhZ7Nrw="
+    func byteArray() {
+      filePath := "random-number"
 
-      // Decode Base64 string
-      decodedBytes, err := base64.StdEncoding.DecodeString(encodedString)
+      content, err := ioutil.ReadFile(filePath)
       if err != nil {
-        fmt.Println("Error decoding:", err)
+        fmt.Println("Error reading file:", err)
         return
       }
 
-      // Convert byte slice to string
-      decodedString := string(decodedBytes)
-
-      // Convert string to byte slice
-      byteArray := []byte(decodedString)
-
-      // Print the result
-      fmt.Println("Base64 Encoded:", encodedString)
-      fmt.Println("Decoded String:", decodedString)
-      fmt.Println("Bytes Array:", byteArray)
+      fmt.Println("Bytes Array:", content)
     }
 
     func waitForever() {

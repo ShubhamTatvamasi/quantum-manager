@@ -22,7 +22,13 @@ spec:
         - name: qrng-volume
           subPath: main.go
           mountPath: /go/main.go
+        - name: keyrequest-sample-volume
+          subPath: random-number
+          mountPath: /go/random-number
       volumes:
       - name: qrng-volume
         configMap:
           name: qrng-config
+      - name: keyrequest-sample-volume
+        secret:
+          secretName: keyrequest-sample
