@@ -18,7 +18,6 @@ package controller
 
 import (
 	"context"
-	"fmt"
 
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
@@ -52,8 +51,15 @@ func (r *KeyRequestReconciler) Reconcile(ctx context.Context, req ctrl.Request) 
 	_ = log.FromContext(ctx)
 
 	// TODO(user): your logic here
-	fmt.Println("Hello from Quantum Manager")
-	oqs.GenerateKey()
+	// generateSecretResult, err := oqs.GenerateSecret(r.Client, ctx, req)
+	// if err != nil {
+	// 	return generateSecretResult, err
+	// }
+
+	generateRandomNumberResult, err := oqs.GenerateRandomNumber(r.Client, ctx, req)
+	if err != nil {
+		return generateRandomNumberResult, err
+	}
 
 	return ctrl.Result{}, nil
 }
