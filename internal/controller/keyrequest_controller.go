@@ -51,11 +51,6 @@ func (r *KeyRequestReconciler) Reconcile(ctx context.Context, req ctrl.Request) 
 	_ = log.FromContext(ctx)
 
 	// TODO(user): your logic here
-	// generateSecretResult, err := oqs.GenerateSecret(r.Client, ctx, req)
-	// if err != nil {
-	// 	return generateSecretResult, err
-	// }
-
 	generateRandomNumberResult, err := oqs.GenerateRandomNumber(r.Client, ctx, req)
 	if err != nil {
 		return generateRandomNumberResult, err
