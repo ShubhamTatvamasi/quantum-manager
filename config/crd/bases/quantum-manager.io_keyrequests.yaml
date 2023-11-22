@@ -14,7 +14,14 @@ spec:
     singular: keyrequest
   scope: Namespaced
   versions:
-  - name: v1
+  - additionalPrinterColumns:
+    - jsonPath: .metadata.creationTimestamp
+      name: Age
+      type: date
+    - jsonPath: .spec.bytes
+      name: Bytes
+      type: integer
+    name: v1
     schema:
       openAPIV3Schema:
         description: KeyRequest is the Schema for the keyrequests API

@@ -30,7 +30,7 @@ type KeyRequestSpec struct {
 
 	// Foo is an example field of KeyRequest. Edit keyrequest_types.go to remove/update
 	Foo string `json:"foo,omitempty"`
-	// +kubebuilder:validation:Required
+	//+kubebuilder:validation:Required
 	Bytes int `json:"bytes,omitempty"`
 }
 
@@ -42,6 +42,8 @@ type KeyRequestStatus struct {
 
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
+//+kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
+//+kubebuilder:printcolumn:name="Bytes",type=integer,JSONPath=`.spec.bytes`
 
 // KeyRequest is the Schema for the keyrequests API
 type KeyRequest struct {
