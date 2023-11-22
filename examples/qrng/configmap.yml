@@ -18,12 +18,6 @@ data:
       waitForever()
     }
 
-    func waitForever() {
-      for {
-        time.Sleep(time.Hour)
-      }
-    }
-
     func decodeSecret() {
       // Your Base64-encoded string
       encodedString := "OPWQbmEPr/yGtYvBaQpGY/U1Afq/atL6/YF1PhZ7Nrw="
@@ -45,4 +39,10 @@ data:
       fmt.Println("Base64 Encoded:", encodedString)
       fmt.Println("Decoded String:", decodedString)
       fmt.Println("Bytes Array:", byteArray)
+    }
+
+    func waitForever() {
+      for {
+        time.Sleep(time.Hour)
+      }
     }
