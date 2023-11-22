@@ -87,13 +87,12 @@ func (r *KeyRequestReconciler) CreateSecret(keyrequest *quantummanageriov1.KeyRe
 		},
 	}
 
-	// existingSecret := &corev1.Secret{}
 	err := r.Get(ctx, client.ObjectKey{Namespace: secret.Namespace, Name: secret.Name}, secret)
 	if err != nil && client.IgnoreNotFound(err) != nil {
 		return err
 	}
 
-	// If Secret doesn't exist, create itß
+	// If Secret doesn't exist, create it
 	if err != nil {
 
 		randomNumber := oqsrand.RandomBytes(keyrequest.Spec.Bytes)
