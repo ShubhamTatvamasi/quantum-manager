@@ -34,6 +34,8 @@ spec:
           spec:
             description: KeyRequestSpec defines the desired state of KeyRequest
             properties:
+              bytes:
+                type: integer
               foo:
                 description: Foo is an example field of KeyRequest. Edit keyrequest_types.go
                   to remove/update

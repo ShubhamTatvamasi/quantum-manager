@@ -6,11 +6,9 @@ import (
 
 	corev1 "k8s.io/api/core/v1"
 	"sigs.k8s.io/controller-runtime/pkg/client"
-	// other imports
 )
 
 func CreateOrUpdateSecret(r client.Client, ctx context.Context, secret *corev1.Secret) error {
-	// Function implementation...
 
 	existingSecret := &corev1.Secret{}
 	err := r.Get(ctx, client.ObjectKey{Namespace: secret.Namespace, Name: secret.Name}, existingSecret)

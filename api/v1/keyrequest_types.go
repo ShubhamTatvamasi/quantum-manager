@@ -29,7 +29,8 @@ type KeyRequestSpec struct {
 	// Important: Run "make" to regenerate code after modifying this file
 
 	// Foo is an example field of KeyRequest. Edit keyrequest_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	Foo   string `json:"foo,omitempty"`
+	Bytes int    `json:"bytes,omitempty"`
 }
 
 // KeyRequestStatus defines the observed state of KeyRequest

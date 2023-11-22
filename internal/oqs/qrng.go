@@ -14,16 +14,16 @@ import (
 
 func GenerateRandomNumber(r client.Client, ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 
-	randomNumber := oqsrand.RandomBytes(32)
-
-	// delete this in future
-	fmt.Println(randomNumber)
-
 	keyrequest := &quantummanageriov1.KeyRequest{}
 	err := r.Get(ctx, req.NamespacedName, keyrequest)
 	if err != nil {
 		return ctrl.Result{}, client.IgnoreNotFound(err)
 	}
+
+	randomNumber := oqsrand.RandomBytes(keyrequest.Spec.Bytes)
+
+	// delete this in future
+	fmt.Println(randomNumber)
 
 	secret := &corev1.Secret{
 		ObjectMeta: metav1.ObjectMeta{
