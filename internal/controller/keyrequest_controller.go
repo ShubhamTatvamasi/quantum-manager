@@ -62,7 +62,7 @@ func (r *KeyRequestReconciler) Reconcile(ctx context.Context, req ctrl.Request) 
 		return ctrl.Result{}, client.IgnoreNotFound(err)
 	}
 
-	if err = r.CreateSecret(keyrequest, ctx); err != nil {
+	if err = r.CreateOrUpdateSecret(keyrequest, ctx); err != nil {
 		log.Error(err, "Failed to Create or Update Secret")
 		return ctrl.Result{}, err
 	}
@@ -78,7 +78,7 @@ func (r *KeyRequestReconciler) SetupWithManager(mgr ctrl.Manager) error {
 		Complete(r)
 }
 
-func (r *KeyRequestReconciler) CreateSecret(keyrequest *quantummanageriov1.KeyRequest, ctx context.Context) error {
+func (r *KeyRequestReconciler) CreateOrUpdateSecret(keyrequest *quantummanageriov1.KeyRequest, ctx context.Context) error {
 	log := log.FromContext(ctx)
 
 	secret := &corev1.Secret{
