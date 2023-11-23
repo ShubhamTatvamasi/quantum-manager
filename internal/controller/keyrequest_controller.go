@@ -121,6 +121,52 @@ func (r *KeyRequestReconciler) CreateSecret(keyrequest *quantummanageriov1.KeyRe
 			return err
 		}
 		log.Info("Created Secret")
+
+		// Update status of keyrequest to reflect the number of bytes of key material generated
+		keyrequest.Status.Bytes = keyrequest.Spec.Bytes
+		err = r.Status().Update(ctx, keyrequest)
+		if err != nil {
+			return err
+		}
+		log.Info("Updated KeyRequest Status")
+	} else {
+		// If Secret exists, update it if the number of bytes of key material generated is different
+		if keyrequest.Status.Bytes != keyrequest.Spec.Bytes {
+
+			randomNumber := oqsrand.RandomBytes(keyrequest.Spec.Bytes)
+
+			// delete this in future
+			fmt.Println(randomNumber)
+
+			updatedSecret := &corev1.Secret{
+				ObjectMeta: metav1.ObjectMeta{
+					Name:      keyrequest.Name,
+					Namespace: keyrequest.Namespace,
+				},
+				StringData: map[string]string{
+					"random-number": string(randomNumber),
+				},
+			}
+
+			if err := ctrl.SetControllerReference(keyrequest, updatedSecret, r.Scheme); err != nil {
+				log.Error(err, "Failed to Set Controller Reference")
+				return err
+			}
+
+			err = r.Update(ctx, updatedSecret)
+			if err != nil {
+				return err
+			}
+			log.Info("Updated Secret")
+
+			// Update status of keyrequest to reflect the number of bytes of key material generated
+			keyrequest.Status.Bytes = keyrequest.Spec.Bytes
+			err = r.Status().Update(ctx, keyrequest)
+			if err != nil {
+				return err
+			}
+			log.Info("Updated KeyRequest Status")
+		}
 	}
 
 	return nil

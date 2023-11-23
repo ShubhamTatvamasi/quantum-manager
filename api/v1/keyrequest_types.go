@@ -28,9 +28,7 @@ type KeyRequestSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of KeyRequest. Edit keyrequest_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
-	//+kubebuilder:validation:Required
+	// Bytes is the number of bytes of key material to generate
 	Bytes int `json:"bytes,omitempty"`
 }
 
@@ -38,6 +36,9 @@ type KeyRequestSpec struct {
 type KeyRequestStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+
+	// Bytes is the number of bytes of key material to generate
+	Bytes int `json:"bytes,omitempty"`
 }
 
 //+kubebuilder:object:root=true

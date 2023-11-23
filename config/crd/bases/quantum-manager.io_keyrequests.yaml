@@ -42,14 +42,15 @@ spec:
             description: KeyRequestSpec defines the desired state of KeyRequest
             properties:
               bytes:
+                description: Bytes is the number of bytes of key material to generate
                 type: integer
-              foo:
-                description: Foo is an example field of KeyRequest. Edit keyrequest_types.go
-                  to remove/update
-                type: string
             type: object
           status:
             description: KeyRequestStatus defines the observed state of KeyRequest
+            properties:
+              bytes:
+                description: Bytes is the number of bytes of key material to generate
+                type: integer
             type: object
         type: object
     served: true
