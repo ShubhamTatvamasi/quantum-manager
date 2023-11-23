@@ -10,4 +10,4 @@ metadata:
   name: keyrequest-sample
 spec:
   # TODO(user): Add fields here
-  bytes: 64
+  bytes: 32
